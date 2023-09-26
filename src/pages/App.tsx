@@ -10,6 +10,11 @@ function App() {
   const [selecionado, setSelecionado] = useState<ITarefa>();
 
   function selecionaTarefa(tarefaSelecionada: ITarefa) {
+    if (selecionado) {  
+      console.log("Já existe uma tarefa em andamento")
+      return;
+    }
+
     setSelecionado(tarefaSelecionada);
     setTarefas(tarefasAnteriores => tarefasAnteriores.map(tarefa => ({
       ...tarefa,
@@ -32,7 +37,6 @@ function finalizarTarefa () {
     }));
   }
 }
-
 
   return (
     <div className={style.AppStyle}>
